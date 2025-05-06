@@ -37,7 +37,9 @@ enum editorKey {
   HOME_KEY,
   END_KEY,
   PAGE_UP,
-  PAGE_DOWN
+  PAGE_DOWN,
+  CTRL_N,
+  CTRL_P,
 };
 
 enum editorHighlight {

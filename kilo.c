@@ -11,9 +11,9 @@ char *C_HL_keywords[] = {"switch",    "if",      "while",   "for",    "break",
                          "unsigned|", "signed|", "void|",   NULL};
 
 char *MK_HL_extensions[] = {".mk", NULL};
-char *MK_HL_keywords[] = {"if",     "else",   "let",      "fn",    "macro",
-                          "first|", "rest|",  "len|",     "push|", "print|",
-                          "eval|",  "quote|", "unquote|", NULL};
+char *MK_HL_keywords[] = {"if",     "else",  "let",    "fn",       "macro",
+                          "first|", "rest|", "last|",  "len|",     "push|",
+                          "print|", "eval|", "quote|", "unquote|", NULL};
 
 struct editorSyntax HLDB[] = {
     {"c", C_HL_extensions, C_HL_keywords, "//", "/*", "*/",
@@ -910,6 +910,11 @@ void editorProcessKeypress(void) {
   static int quit_times = KILO_QUIT_TIMES;
 
   int c = editorReadKey();
+  if  (c == CTRL_KEY('n')){
+    c = ARROW_DOWN;
+  } else if  (c == CTRL_KEY('p')){
+    c = ARROW_UP;
+  }
 
   switch (c) {
   case '\r': // Enter
